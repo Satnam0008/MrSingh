@@ -1,349 +1,579 @@
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<title> Mr. Singh </title>
-<style>
-body{
-    background-color: lightblue;
-    }
- h1 {
-      color: red;
-      margin:30px 0 30px 30px;
-      width: fit-content;
-      background-color: lightgreen;
-      border:2px solid green;
-      border-radius:8px;
-      box-shadow: 5px 5px 10px gray;
-      transition:0.3s;
-      text-align:center;
-     }
-h1:hover{
-      transform: scale(1.05);
-}
-h4 {
-     color: green;
-    }
-p1 {
-    color: blue;
-    }
-ol {
-     color: brown;
-    }
-.pic { 
-     border:6px solid green;
-     object-fit:cover;
-     width:300px;
-     height:460px;
-     display:block;
-     border-radius:20px;
-     box-shadow: 5px 5px 10px gray;
-    
-}
-.pic:hover{
-transform: scale(1.05);
-}
-h3 {
- font-size: 20px;
-}
-.highlight {
-  color: green;
-  font-size: 20px;
-  font-style: italic;
-  }
-#sp{
-    color: red;
-    font-size: 30px;
-    font-style: italic;
-}
-.box{
-   background-color:white;
-   width:300px;
-   padding:10px;
-   margin:20px;
-   border:6px;
-   border-radius:15px;
-   display:inline-block;
-   box-shadow:5px 5px 10px gray;
-   transition:0.3s;
-   text-align:center;
-   }
-.box:hover{
-transform: scale(1.05);
-}
-button{
-   background-color:lightgreen;
-   border:2px solid green;
-     border-radius:10px;
-     height:40px;
-     width:60px;
-     box-shadow: 5px 5px 10px gray;
-transition:0.3s;
-}
-button:hover{
-   transform: scale(1.05);
-   background-color: green;
-}
-input{
- border-radius:5px;
- border:2px solid green;
-box-shadow: 5px 5px 10px gray;
-transition:0.3s;
-}
-input:hover{
-   transform: scale(1.05);
-}
-form button{
-   background-color:blue;
-   border:2px solid green;
-     border-radius:10px;
-     height:30px;
-     width:60px;
-     color:white;
-     box-shadow: 5px 5px 10px gray;
-transition:0.3s;
-}
-form button:hover{
-   transform: scale(1.05);
-   background-color: green;
-}
-.container{
-    background-color:pink;
-    width:90%;
-    max-width:1000px;
-    margin:30px auto;
-    padding:20px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    border-radius:20px;
-}
-}
-.box{ 
-   width:300px;
-   padding:20px;
-   background-color:white;
-   border-radius:15px;
-   text-align:center;
-   box-shadow:5px 5px 10px gray;
-}
-.logo {
-    border:0px solid black;
-    width: 50px;
-    height: 50px;
-    border-radius:0;
-    object-fit:cover;
-    display: block;
-    margin-right:0;
-    position: absolute;
-    right:20px;
-    top:20px;
-}
-.main-section {
-    width: 100%;
-   max-width:1200px;
-    margin: 30px auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    border-radius:0px;
-}
-.journey {
-    width: 350px;
-    padding: 25px;
-    background-color: white;
-    border-left: 6px solid green;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px gray;
-    text-align: left;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio of Satnam Singh, an aspiring web developer.">
+    <title>Satnam Singh | Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #17233a;
+            --muted: #60708b;
+            --paper: #f7f9fc;
+            --white: #fff;
+            --accent: #177f68;
+            --accent-dark: #086452;
+            --warm: #f3ae4c;
+            --line: #dce4ef
+        }
 
-.journey h2 {
-    color: green;
-    text-align: center;
-    font-size: 28px;
-    margin-top: 0;
-}
+        * {
+            box-sizing: border-box
+        }
 
-.journey p {
-    font-size: 18px;
-    margin: 18px 0;
-}
-nav{
-    position: absolute;
-    top: 28px;
-    left:50%;
-   
-    background-color: lightblue;
-    padding: 15px 20px;
-    border-radius: 15px;
-    box-shadow: 5px 5px 10px gray;
-    z-index: 10;
-}
-nav a{
-     color: black;
-    text-decoration: none;
-    margin: 0 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-nav a:hover{
-    color:green;
-}
-.goals {
-    width: 350px;
-    padding: 25px;
-    background-color: white;
-    border-left: 6px solid blue;
-    border-radius: 15px;
-    box-shadow: 5px 5px 15px gray;
-    text-align: left;
-}
+        html {
+            scroll-behavior: smooth
+        }
 
-.goals h2 {
-    color: blue;
-    text-align: center;
-    font-size: 28px;
-    margin-top: 0;
-}
+        body {
+            margin: 0;
+            font-family: Manrope, Arial, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.6
+        }
 
-.goals p {
-    font-size: 18px;
-    margin: 18px 0;
-}
-*{
-  box-sizing:border-box;
-} 
-@media (max-width:800px)
-{
-h1 
-  {
-font-size:30px;
-margin:20px auto;
-}
-nav {
-position:static;
-transform: none;
-width:95%;
-margin:10px auto;
-text-align:center;
-}
-.journey{
-position: static;
-width:90%;
-margin:30px auto;
-}
-.pic{
-position:static;
-width:80%;
-max-width:300px;
-height:auto;
-margin:30px auto;
-}
-.main-section {
-        flex-direction: column;
-        align-items: center;
-transform: none;
-    }
-.container{
-display:flex;
-width:95%;
-flex-direction:column;
-align-items:center;
-}
-.box{
-width:90%;
-}
-.logo {
-    position: static;
-    width: 50px;
-    height: 50px;
-    margin: 10px auto;
-}
-.goals{
-    position:static;
-    width:90%;
-    margin:30px auto;
-}
-}
-</style>
+        a {
+            color: inherit
+        }
+
+        .shell {
+            width: min(1120px, calc(100% - 40px));
+            margin: auto
+        }
+
+        header {
+            padding: 22px 0
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: -.04em;
+            font-size: 1.1rem
+        }
+
+        .brand-mark {
+            display: grid;
+            place-items: center;
+            width: 36px;
+            aspect-ratio: 1;
+            border-radius: 11px;
+            color: white;
+            background: var(--accent);
+            font-family: "DM Mono", monospace
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--muted)
+        }
+
+        .nav-links a:hover {
+            color: var(--accent)
+        }
+
+        .hero {
+            min-height: 530px;
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 64px;
+            align-items: center;
+            padding: 56px 0 80px
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-family: "DM Mono", monospace;
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0
+        }
+
+        h1 {
+            max-width: 700px;
+            font-size: clamp(2.7rem, 6vw, 5rem);
+            line-height: 1.05;
+            letter-spacing: -.065em;
+            margin: 16px 0 24px
+        }
+
+        h1 em {
+            color: var(--accent);
+            font-style: normal
+        }
+
+        .intro {
+            max-width: 610px;
+            font-size: 1.08rem;
+            color: var(--muted)
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 32px
+        }
+
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 0 20px;
+            border-radius: 10px;
+            font: 700 .9rem Manrope, sans-serif;
+            text-decoration: none;
+            transition: .2s ease
+        }
+
+        .primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 9px 20px #177f6830
+        }
+
+        .primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px)
+        }
+
+        .secondary {
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink)
+        }
+
+        .secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .portrait-wrap {
+            position: relative;
+            margin: auto;
+            width: min(100%, 360px)
+        }
+
+        .portrait-wrap:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            inset: -18px 20px 18px -18px;
+            border-radius: 26px;
+            background: #d8eee9
+        }
+
+        .portrait {
+            width: 100%;
+            height: 430px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 22px;
+            box-shadow: 16px 18px 0 var(--warm)
+        }
+
+        .photo-note {
+            position: absolute;
+            right: -28px;
+            bottom: 26px;
+            padding: 10px 14px;
+            border-radius: 9px;
+            color: var(--accent);
+            background: #fff;
+            box-shadow: 0 10px 30px #17233a1b;
+            font: 500 .73rem "DM Mono", monospace
+        }
+
+        section {
+            padding: 88px 0
+        }
+
+        .section-heading {
+            max-width: 580px;
+            margin-bottom: 36px
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            line-height: 1.18;
+            letter-spacing: -.05em;
+            margin: 8px 0 10px
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin: 0
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 28px
+        }
+
+        .card h3 {
+            font-size: 1.08rem;
+            letter-spacing: -.03em;
+            margin-bottom: 18px
+        }
+
+        .timeline {
+            display: grid;
+            gap: 0
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 22px 27px;
+            border-left: 2px solid #d6e8e4
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent)
+        }
+
+        .timeline-item strong {
+            display: block;
+            font-size: .95rem
+        }
+
+        .timeline-item span {
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        .goals {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px
+        }
+
+        .goal {
+            padding: 16px;
+            background: #f3f8f7;
+            border-radius: 10px;
+            font-size: .9rem;
+            font-weight: 700
+        }
+
+        .goal b {
+            display: block;
+            color: var(--accent);
+            font-family: "DM Mono", monospace;
+            font-size: .75rem;
+            margin-bottom: 4px
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        .skill {
+            padding: 26px;
+            border-radius: 14px;
+            background: var(--ink);
+            color: #fff
+        }
+
+        .skill:nth-child(2) {
+            background: var(--accent)
+        }
+
+        .skill:nth-child(3) {
+            background: #d9892f
+        }
+
+        .skill-number {
+            display: block;
+            margin-bottom: 18px;
+            opacity: .72;
+            font: 500 .76rem "DM Mono", monospace
+        }
+
+        .skill h3 {
+            margin: 0 0 7px;
+            font-size: 1.1rem
+        }
+
+        .skill p {
+            margin: 0;
+            color: #ffffffc7;
+            font-size: .88rem
+        }
+
+        .contact {
+            padding-top: 25px
+        }
+
+        .contact-box {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+            padding: 42px;
+            background: var(--accent);
+            border-radius: 20px;
+            color: white
+        }
+
+        .contact-box h2 {
+            margin: 5px 0 10px
+        }
+
+        .contact-box p {
+            max-width: 570px;
+            color: #e9fffa;
+            margin: 0
+        }
+
+        .contact .eyebrow {
+            color: #c2f0e5
+        }
+
+        .contact-box .button {
+            background: #fff;
+            color: var(--accent-dark);
+            white-space: nowrap
+        }
+
+        .contact-box .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px #00473736
+        }
+
+        footer {
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: .82rem
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: 1px solid var(--line);
+            padding-top: 25px
+        }
+
+        @media(max-width:760px) {
+            .nav-links {
+                gap: 14px;
+                font-size: .85rem
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 46px;
+                padding-top: 38px
+            }
+
+            .portrait-wrap {
+                order: -1;
+                width: min(78%, 330px)
+            }
+
+            .portrait {
+                height: 370px
+            }
+
+            .about-grid,
+            .skills {
+                grid-template-columns: 1fr
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+                padding: 30px
+            }
+
+            section {
+                padding: 62px 0
+            }
+        }
+
+        @media(max-width:460px) {
+            .shell {
+                width: min(100% - 28px, 1120px)
+            }
+
+            .nav-links {
+                gap: 10px
+            }
+
+            .nav-links a {
+                font-size: .75rem
+            }
+
+            .brand {
+                font-size: 1rem
+            }
+
+            .photo-note {
+                right: -8px
+            }
+
+            .goals {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
 </head>
+
 <body>
-<h1> Mr. Satnam Singh </h1>
-<nav>
-   <a href="home" target="_blank">Home</a>
-   <a href="About" target="_blank">About</a>
-   <a href="Skills" target="_blank">Skills</a>
-   <a href="Contact" target="_blank">Contact</a>
-</nav>
-<h4> Passionate about learning and building with technology </h4>
-<p1> I am on a journey to become a skilled web developer, constantly learning
-    new technologies and improving my ability to create modern and meaningful
-    digital experiences. </p1>
-<p style="color:#800080">  My goal is not just to learn how to code, but to turn ideas into
-    professional websites and useful projects that can make a real difference. </p>
-<p style="color:red">
-    Every project I build is another step toward becoming a better developer,
-    gaining experience, solving problems, and creating something I can be proud of.
-</p>
-<a style="color:blue" href="https://www.youtube.com" target="_blank">visit youtube</a>
-<p class="highlight">Welcome to my <span style="color:red;">personal portfolio.</span></p>
-<div class="main-section">
-<div class="journey">
-  <h2> My Journey </h2>
-   <p>🌱 Started learning HTML</p>
-    <p>🎨 Learned CSS and web design</p>
-    <p>💻 Building my first website</p>
-    <p>🚀 Next goal: JavaScript</p>
-</div>
-<div class="goals">
-    <h2>My Goals</h2>
-    <p>💻 Become a Web Developer</p>
-    <p>🚀 Learn JavaScript</p>
-    <p>🎯 Build Professional Websites</p>
-    <p>💰 Start My Own Business</p>
-</div>
-<img class="pic" src="sunny.jpg">
-</div>
-<p id="sp">This is very importent part</p>
-<h3> Things that i want to <i>learn</i> </h3>
-<ul>
-    <li style="color: green">html</li>
-    <li>css</li>
-    <li style="color:red ">javaScript</li>
-</ul>
-<h3> Daily routien</h3>
-<ol>
-    <li>learning</li>
-    <li>teaching</li>
-    <li>explaning</li>
-</ol>
-<div class="container">
-<div class="box">
-  <h2>About me</h2>
-  <p>My name is Mr. Singh.</p>
-  <p>I am learning Web development.</p>
-</div>
-<div class="box">
-  <h2>hobbys</h2>
-  <p>learning.</p>
-  <p>musice listning.</p>
-</div>
-<div class="box">
-  <h2>Aim</h2>
-  <p>Be a Richest one.</p>
-</div>
-</div>
-<br><br>
-<a href="https://www.instagram.com/mr.singh6324" target="_blank"><button>click insta</button></a>
-<h2>contect me:</h2>
-<form>
-<label>Name:</label>
-<input type="text" placeholder="enter your name">
-<br><br>
-<label>E-mail:</label>
-<input type="email" placeholder="Enter E=mail Address">
-<br><br>
-<button type="submit">Submit</button>
-</form>
+    <header class="shell">
+        <nav class="nav" aria-label="Main navigation"><a class="brand" href="#home"><span
+                    class="brand-mark">S</span>Satnam Singh</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero shell" id="home">
+            <div>
+                <div class="eyebrow">Aspiring web developer</div>
+                <h1>I turn curiosity into <em>web experiences.</em></h1>
+                <p class="intro">I'm Satnam Singh, a motivated learner building the skills to create useful, thoughtful,
+                    and modern websites—one project at a time.</p>
+                <div class="hero-actions"><a class="button primary" href="#contact">Let's connect <span
+                            aria-hidden="true">→</span></a><a class="button secondary" href="#about">My journey</a>
+                </div>
+            </div>
+            <div class="portrait-wrap"><img class="portrait" src="sunny.jpg" alt="Portrait of Satnam Singh"><span
+                    class="photo-note">learning · building · growing</span></div>
+        </section>
+        <section id="about">
+            <div class="shell">
+                <div class="section-heading">
+                    <div class="eyebrow">About me</div>
+                    <h2>Growing with every line of code.</h2>
+                    <p>My aim is to turn ideas into professional websites and useful digital projects that make a real
+                        difference.</p>
+                </div>
+                <div class="about-grid">
+                    <article class="card">
+                        <h3>My journey so far</h3>
+                        <div class="timeline">
+                            <div class="timeline-item"><strong>Started with HTML</strong><span>Learning how the web is
+                                    structured.</span></div>
+                            <div class="timeline-item"><strong>Exploring CSS & design</strong><span>Making pages clear,
+                                    responsive, and enjoyable.</span></div>
+                            <div class="timeline-item"><strong>Building my first projects</strong><span>Putting new
+                                    skills into practice.</span></div>
+                            <div class="timeline-item"><strong>Next: JavaScript</strong><span>Bringing ideas to life
+                                    with interaction.</span></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>What I'm working toward</h3>
+                        <div class="goals">
+                            <div class="goal"><b>01</b>Become a web developer</div>
+                            <div class="goal"><b>02</b>Master JavaScript</div>
+                            <div class="goal"><b>03</b>Build professional sites</div>
+                            <div class="goal"><b>04</b>Start my own business</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="skills">
+            <div class="shell">
+                <div class="section-heading">
+                    <div class="eyebrow">Learning now</div>
+                    <h2>The foundations I’m building.</h2>
+                </div>
+                <div class="skills">
+                    <article class="skill"><span class="skill-number">01 / HTML</span>
+                        <h3>Structure</h3>
+                        <p>Writing semantic, well-organized pages.</p>
+                    </article>
+                    <article class="skill"><span class="skill-number">02 / CSS</span>
+                        <h3>Design</h3>
+                        <p>Creating clean layouts that work on every screen.</p>
+                    </article>
+                    <article class="skill"><span class="skill-number">03 / Next up</span>
+                        <h3>JavaScript</h3>
+                        <p>Learning to build useful, interactive experiences.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <div class="shell">
+                <div class="contact-box">
+                    <div>
+                        <div class="eyebrow">Get in touch</div>
+                        <h2>Have an idea to build?</h2>
+                        <p>I’m always learning and open to connecting with people who enjoy creating on the web.</p>
+                    </div><a class="button" href="https://www.instagram.com/mr.singh6324" target="_blank"
+                        rel="noopener">Find me on Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="shell">
+        <div class="footer-content"><span>© 2026 Satnam Singh</span><span>Built with curiosity.</span></div>
+    </footer>
 </body>
+
 </html>
