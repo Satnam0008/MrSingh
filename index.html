@@ -811,6 +811,14 @@
                 </div>
             </div>
         </section>
+        <section id="projects"><div class="shell">
+            <div class="section-heading"><div class="eyebrow">Projects</div><h2>Ideas I am ready to build.</h2><p>These cards are ready for your real projects as you complete them.</p></div>
+            <div class="projects reveal">
+                <article class="project"><div><span class="project-tag">Project 01</span><h3>Personal Portfolio</h3><p>A responsive website that introduces my work, goals, and learning journey.</p></div><a class="project-link" href="#home">View site &rarr;</a></article>
+                <article class="project"><div><span class="project-tag">Coming soon</span><h3>Business Landing Page</h3><p>A clear and useful website for a small business or local brand.</p></div><a class="project-link" href="#contact">Let's build it &rarr;</a></article>
+                <article class="project"><div><span class="project-tag">Coming soon</span><h3>JavaScript App</h3><p>An interactive project to practise my next web development skills.</p></div><a class="project-link" href="#skills">See my skills &rarr;</a></article>
+            </div>
+        </div></section>
         <section class="contact" id="contact">
             <div class="shell">
                 <div class="contact-box">
@@ -821,12 +829,79 @@
                     </div><a class="button" href="https://www.instagram.com/mr.singh6324" target="_blank"
                         rel="noopener">Find me on Instagram</a>
                 </div>
+                <div class="contact-area reveal">
+                    <form class="contact-form" id="contact-form">
+                        <h3>Send a message</h3>
+                        <label for="name">Your name</label><input id="name" name="name" required placeholder="Your name">
+                        <label for="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com">
+                        <label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell me about your idea"></textarea>
+                        <button class="button primary" type="submit">Send message</button>
+                        <p class="form-note" id="form-note" role="status">Thank you! Your message has been saved in this page.</p>
+                    </form>
+                    <div class="card"><h3>Find me online</h3><p>Use these links to follow my journey and connect with me.</p><div class="social-links"><a href="https://www.instagram.com/mr.singh6324" target="_blank" rel="noopener">Instagram</a><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:">Email</a></div></div>
+                </div>
             </div>
         </section>
     </main>
     <footer class="shell">
         <div class="footer-content"><span>© 2026 Satnam Singh</span><span>Built with curiosity.</span></div>
     </footer>
+    <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+    <script>
+        const body = document.body;
+        const themeButton = document.querySelector('.theme-toggle');
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        const topButton = document.querySelector('.back-to-top');
+        const greeting = document.querySelector('#greeting');
+
+        function setTheme(theme) {
+            body.classList.toggle('dark', theme === 'dark');
+            themeButton.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+        }
+
+        setTheme(localStorage.getItem('theme') || 'light');
+        themeButton.addEventListener('click', () => {
+            const theme = body.classList.contains('dark') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+            setTheme(theme);
+        });
+
+        menuButton.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            menuButton.setAttribute('aria-expanded', open);
+        });
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            menuButton.setAttribute('aria-expanded', 'false');
+        }));
+
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const welcome = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+            greeting.textContent = welcome + ' — ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        updateGreeting();
+        setInterval(updateGreeting, 30000);
+
+        document.querySelector('#contact-form').addEventListener('submit', event => {
+            event.preventDefault();
+            document.querySelector('#form-note').style.display = 'block';
+            event.currentTarget.reset();
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        }), { threshold: .15 });
+        reveals.forEach(section => observer.observe(section));
+
+        window.addEventListener('scroll', () => topButton.classList.toggle('visible', window.scrollY > 450));
+        topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
 </body>
 
 </html>
