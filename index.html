@@ -431,7 +431,14 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 10px
+            gap: 16px;
+            margin-left: 18px
+        }
+
+        .nav-resume {
+            min-height: 40px;
+            padding: 0 15px;
+            white-space: nowrap
         }
 
         .greeting {
@@ -727,13 +734,13 @@
     <header class="shell">
         <nav class="nav" aria-label="Main navigation"><a class="brand" href="#home"><img class="brand-logo"
                     src="logo.png" alt="Satnam Singh logo">Satnam Singh</a>
-            <div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch colour theme">Dark mode</button><button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button></div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-actions"><a class="button secondary nav-resume" href="Satnam-Singh-Resume.html" download>Download resume</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button></div>
         </nav>
     </header>
     <main>
@@ -747,7 +754,6 @@
                 <div class="hero-actions"><a class="button primary" href="#contact">Let's connect <span
                             aria-hidden="true">→</span></a><a class="button secondary" href="#about">My journey</a>
                 </div>
-                <a class="button secondary" href="Satnam-Singh-Resume.html" download>Download resume</a>
             </div>
             <div class="portrait-wrap"><img class="portrait" src="sunny.jpg" alt="Portrait of Satnam Singh"><span
                     class="photo-note">learning · building · growing</span></div>
@@ -848,24 +854,10 @@
     </footer>
     <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
     <script>
-        const body = document.body;
-        const themeButton = document.querySelector('.theme-toggle');
         const menuButton = document.querySelector('.menu-button');
         const navLinks = document.querySelector('.nav-links');
         const topButton = document.querySelector('.back-to-top');
         const greeting = document.querySelector('#greeting');
-
-        function setTheme(theme) {
-            body.classList.toggle('dark', theme === 'dark');
-            themeButton.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
-        }
-
-        setTheme(localStorage.getItem('theme') || 'light');
-        themeButton.addEventListener('click', () => {
-            const theme = body.classList.contains('dark') ? 'light' : 'dark';
-            localStorage.setItem('theme', theme);
-            setTheme(theme);
-        });
 
         menuButton.addEventListener('click', () => {
             const open = navLinks.classList.toggle('open');
