@@ -556,6 +556,59 @@
             font-weight: 700
         }
 
+        .delivery-dialog {
+            width: min(420px, calc(100% - 32px));
+            padding: 0;
+            border: 0;
+            border-radius: 16px;
+            color: var(--ink);
+            background: var(--white);
+            box-shadow: 0 20px 50px #17233a45
+        }
+
+        .delivery-dialog::backdrop {
+            background: #17233a85
+        }
+
+        .delivery-content {
+            padding: 28px
+        }
+
+        .delivery-content h3 {
+            margin-bottom: 7px
+        }
+
+        .delivery-content p {
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .delivery-options {
+            display: grid;
+            gap: 10px;
+            margin-top: 20px
+        }
+
+        .delivery-options button {
+            min-height: 48px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            color: var(--ink);
+            background: var(--paper);
+            cursor: pointer;
+            font: 800 .9rem Manrope, sans-serif
+        }
+
+        .delivery-options button:hover {
+            border-color: var(--accent);
+            color: var(--accent)
+        }
+
+        .delivery-options .cancel {
+            color: var(--muted);
+            background: transparent
+        }
+
         .social-links {
             display: flex;
             flex-wrap: wrap;
@@ -849,6 +902,17 @@
             </div>
         </section>
     </main>
+    <dialog class="delivery-dialog" id="delivery-dialog" aria-labelledby="delivery-title">
+        <div class="delivery-content">
+            <h3 id="delivery-title">How would you like to send this?</h3>
+            <p>Choose email or text message. Your name, email, and message will be added automatically.</p>
+            <div class="delivery-options">
+                <button type="button" id="send-email">Send to Gmail</button>
+                <button type="button" id="send-sms">Send as text message</button>
+                <button class="cancel" type="button" id="cancel-delivery">Cancel</button>
+            </div>
+        </div>
+    </dialog>
     <footer class="shell">
         <div class="footer-content"><span>© 2026 Satnam Singh</span><span>Built with curiosity.</span></div>
     </footer>
@@ -876,11 +940,37 @@
         updateGreeting();
         setInterval(updateGreeting, 30000);
 
-        document.querySelector('#contact-form').addEventListener('submit', event => {
+        const contactForm = document.querySelector('#contact-form');
+        const deliveryDialog = document.querySelector('#delivery-dialog');
+        let contactMessage = '';
+
+        contactForm.addEventListener('submit', event => {
             event.preventDefault();
-            document.querySelector('#form-note').style.display = 'block';
-            event.currentTarget.reset();
+            const data = new FormData(contactForm);
+            contactMessage = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\n\nMessage:\n' + data.get('message');
+            deliveryDialog.showModal();
         });
+
+        function finishContact() {
+            deliveryDialog.close();
+            document.querySelector('#form-note').textContent = 'Your message is ready to send. Please complete it in the app that opened.';
+            document.querySelector('#form-note').style.display = 'block';
+            contactForm.reset();
+        }
+
+        document.querySelector('#send-email').addEventListener('click', () => {
+            const subject = 'Website message for Satnam Singh';
+            const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=punjab147202@gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(contactMessage);
+            window.open(url, '_blank', 'noopener');
+            finishContact();
+        });
+
+        document.querySelector('#send-sms').addEventListener('click', () => {
+            window.location.href = 'sms:9914993581?body=' + encodeURIComponent(contactMessage);
+            finishContact();
+        });
+
+        document.querySelector('#cancel-delivery').addEventListener('click', () => deliveryDialog.close());
 
         const reveals = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(entries => entries.forEach(entry => {
