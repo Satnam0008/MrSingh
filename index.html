@@ -48,8 +48,20 @@
             margin: auto
         }
 
-        header {
-            padding: 22px 0
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 13px 0;
+            background: color-mix(in srgb, var(--paper) 92%, transparent);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color .2s ease, box-shadow .2s ease
+        }
+
+        .site-header.scrolled {
+            border-color: var(--line);
+            box-shadow: 0 5px 18px #17233a0c
         }
 
         .nav {
@@ -87,16 +99,65 @@
         }
 
         .nav-links a {
+            position: relative;
             text-decoration: none;
             font-size: .9rem;
             font-weight: 700;
-            color: var(--muted)
+            color: var(--muted);
+            transition: color .2s ease
         }
 
-        .nav-links a:hover {
+        .nav-links a:not(.contact-link)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: -7px;
+            left: 0;
+            height: 2px;
+            border-radius: 99px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .2s ease
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent)
         }
 
+        .nav-links a:not(.contact-link):hover::after,
+        .nav-links a.active:not(.contact-link)::after {
+            transform: scaleX(1);
+            transform-origin: left
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 0 13px;
+            border-radius: 8px;
+            color: #fff !important;
+            background: var(--accent);
+            box-shadow: 0 5px 12px #177f6826
+        }
+
+        .contact-link:hover,
+        .contact-link.active {
+            background: var(--accent-dark)
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 60;
+            width: 0;
+            height: 3px;
+            background: var(--warm);
+            transition: width .08s linear
+        }
         .hero {
             min-height: 530px;
             display: grid;
@@ -784,14 +845,15 @@
 </head>
 
 <body>
-    <header class="shell">
-        <nav class="nav" aria-label="Main navigation"><a class="brand" href="#home"><img class="brand-logo"
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header">
+        <nav class="nav shell" aria-label="Main navigation"><a class="brand" href="#home"><img class="brand-logo"
                     src="logo.png" alt="Satnam Singh logo">Satnam Singh</a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a class="contact-link" href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions"><a class="button secondary nav-resume" href="Satnam-Singh-Resume.pdf" download>Download resume</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button></div>
         </nav>
@@ -922,6 +984,8 @@
         const navLinks = document.querySelector('.nav-links');
         const topButton = document.querySelector('.back-to-top');
         const greeting = document.querySelector('#greeting');
+        const header = document.querySelector('.site-header');
+        const progress = document.querySelector('#scroll-progress');
 
         menuButton.addEventListener('click', () => {
             const open = navLinks.classList.toggle('open');
@@ -981,7 +1045,22 @@
         }), { threshold: .15 });
         reveals.forEach(section => observer.observe(section));
 
-        window.addEventListener('scroll', () => topButton.classList.toggle('visible', window.scrollY > 450));
+        const sectionLinks = [...document.querySelectorAll('.nav-links a')];
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sectionLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+                }
+            });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+        document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+
+        window.addEventListener('scroll', () => {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = (scrollable ? (window.scrollY / scrollable) * 100 : 0) + '%';
+            topButton.classList.toggle('visible', window.scrollY > 450);
+            header.classList.toggle('scrolled', window.scrollY > 12);
+        });
         topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 </body>
